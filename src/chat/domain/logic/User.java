@@ -3,9 +3,12 @@ package chat.domain.logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import channels.GUI.ChannelGUI;
+
 public class User {
 	private String username;
-	private List<String> openChannels;
+	private String password;
+	private List<ChannelGUI> openChannels;
 	private List<String> ownChannels;
 
 	public User(String username) {
@@ -22,11 +25,11 @@ public class User {
 		this.username = username;
 	}
 
-	public List<String> getOpenChannels() {
+	public List<ChannelGUI> getOpenChannels() {
 		return openChannels;
 	}
 
-	public void setOpenChannel(List<String> openChannel) {
+	public void setOpenChannel(List<ChannelGUI> openChannel) {
 		this.openChannels = openChannel;
 	}
 
@@ -36,6 +39,14 @@ public class User {
 
 	public void setOwnChannels(List<String> ownChannels) {
 		this.ownChannels = ownChannels;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

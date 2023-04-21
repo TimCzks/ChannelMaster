@@ -13,17 +13,21 @@ import java.util.List;
 
 public class ReadAndSaveData {
 
-	private final String PATH = "./resources/";
+	private final String PATH = "./database/";
 
-	public void saveFileWith(List<String> userinfos, String filename) {
+	public void saveFileWith(List<String> fileinfos, String filename) {
 		File f = new File(PATH + filename + ".txt");
-		if (userinfos.isEmpty() || userinfos == null) {
+		if (fileinfos == null)
 			return;
-		}
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(f));
-			for (String info : userinfos) {
-				writer.write(info + "\n");
+			int counter = 0;
+			for (String info : fileinfos) {
+				counter++;
+				writer.write(info);
+				if (counter < fileinfos.size()) {
+					writer.write(",");
+				}
 			}
 			writer.close();
 		} catch (IOException e1) {
@@ -37,7 +41,7 @@ public class ReadAndSaveData {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			while (br.ready()) {
-				information = br.readLine().split("\n");
+				information = br.readLine().split(",");
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
