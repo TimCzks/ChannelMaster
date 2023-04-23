@@ -1,2 +1,4 @@
 # ChannelMaster
-Project for Verteilte Systeme; Chat-Channel Application
+Projekt für 'Verteilte Systeme' an der DHBW Karlsruhe.
+
+
