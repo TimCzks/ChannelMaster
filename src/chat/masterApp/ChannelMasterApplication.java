@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import channels.GUI.ChannelOverviewGUI;
+import channels.GUI.ChatClientGUI;
+
 import channels.GUI.ChannelGUI;
 import chat.domain.logic.ReadAndSaveData;
 import chat.domain.logic.User;
@@ -51,21 +54,23 @@ public class ChannelMasterApplication {
 		frame.addWindowListener(new java.awt.event.WindowAdapter() {
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-				user.getOwnChannels().add(0, user.getPassword());
-				readAndSaveData.saveFileWith(user.getOwnChannels(), "Users/" + username);
+				save(user);
 			}
 		});
 	}
 
 	private void setUpButtons() {
 		getSearchButton().addActionListener(e -> {
-			// Open overview of existing channels
+			new ChannelOverviewGUI(user, this);
+			getSearchButton().setEnabled(false);
 		});
 		getCreateButton().addActionListener(e -> {
 			createOrOpenOwnChannel();
 		});
 		getGroupChatButton().addActionListener(e -> {
-			// Open Groupchat
+			ChatClientGUI chatClientGUI = new ChatClientGUI();
+			chatClientGUI.initializeGroupChatClient(username, this);
+			getGroupChatButton().setEnabled(false);
 		});
 	}
 
@@ -88,6 +93,11 @@ public class ChannelMasterApplication {
 		}
 		ChannelGUI channel = new ChannelGUI(user, channelname, readAndSaveData.readDataFromFile(pathToChannel));
 		user.getOpenChannels().add(channel);
+	}
+	
+	private void save(User user) {
+		user.getOwnChannels().add(0, user.getPassword());
+		readAndSaveData.saveFileWith(user.getOwnChannels(), "Users/" + username);
 	}
 
 	public JButton getGroupChatButton() {
