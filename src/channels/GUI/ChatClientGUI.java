@@ -14,7 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.chat.server.ThreadClientChat;
+import chat.channels.server.ThreadClientChat;
+import chat.masterApp.ChannelMasterApplication;
 
 public class ChatClientGUI {
 	private JFrame frame;
