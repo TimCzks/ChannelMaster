@@ -66,8 +66,10 @@ public class RegisterGUI {
 			List<String> passwordInList = new ArrayList<>();
 			passwordInList.add(password);
 			readAndSaveData.saveFileWith(passwordInList, "Users/" + username);
+			User user = new User(username);
+			user.setPassword(password);
+			new ChannelMasterApplication(user);
 			frame.dispose();
-			new ChannelMasterApplication(new User(username));
 		}
 	}
 }

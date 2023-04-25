@@ -9,10 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import channels.GUI.ChannelGUI;
 import channels.GUI.ChannelOverviewGUI;
 import channels.GUI.ChatClientGUI;
-
-import channels.GUI.ChannelGUI;
 import chat.domain.logic.ReadAndSaveData;
 import chat.domain.logic.User;
 
@@ -26,7 +25,8 @@ public class ChannelMasterApplication {
 
 	public ChannelMasterApplication(User user) {
 		this.user = user;
-		frame = new JFrame("Startmenu");
+		this.username = user.getUsername();
+		frame = new JFrame("ChannelMasterApp | Logged in as " + username);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(400, 300);
 		frame.setLocationRelativeTo(null);
@@ -94,7 +94,7 @@ public class ChannelMasterApplication {
 		ChannelGUI channel = new ChannelGUI(user, channelname, readAndSaveData.readDataFromFile(pathToChannel));
 		user.getOpenChannels().add(channel);
 	}
-	
+
 	private void save(User user) {
 		user.getOwnChannels().add(0, user.getPassword());
 		readAndSaveData.saveFileWith(user.getOwnChannels(), "Users/" + username);

@@ -26,7 +26,7 @@ public class ReadAndSaveData {
 				counter++;
 				writer.write(info);
 				if (counter < fileinfos.size()) {
-					writer.write(",");
+					writer.write("#");
 				}
 			}
 			writer.close();
@@ -41,7 +41,7 @@ public class ReadAndSaveData {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			while (br.ready()) {
-				information = br.readLine().split(",");
+				information = br.readLine().split("#");
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
