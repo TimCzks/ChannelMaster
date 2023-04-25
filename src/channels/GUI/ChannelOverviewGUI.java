@@ -16,6 +16,13 @@ public class ChannelOverviewGUI {
 	private User user;
 	private ReadAndSaveData readAndSaveData = new ReadAndSaveData();
 
+	/**
+	 * Shows through a new GUI-window all existing channels. Each channel is
+	 * displayed with its name on a button, that can be clicked.
+	 * 
+	 * @param user             that is logged in
+	 * @param channelMasterApp
+	 */
 	public ChannelOverviewGUI(User user, ChannelMasterApplication channelMasterApp) {
 		this.user = user;
 		frame = new JFrame("Overview of all Channels");
@@ -43,6 +50,13 @@ public class ChannelOverviewGUI {
 		});
 	}
 
+	/**
+	 * Adds the functionality to the buttons with the channelnames. With each button
+	 * a new channelGUI can be started and you can enter a channel.
+	 * 
+	 * @param gbc              constraints for the layout of the frame
+	 * @param channelMasterApp
+	 */
 	private void setUpButtons(GridBagConstraints gbc, ChannelMasterApplication channelMasterApp) {
 		String[] allChannels = readAndSaveData.getAllChannelNames();
 		for (String channelname : allChannels) {
@@ -57,6 +71,11 @@ public class ChannelOverviewGUI {
 		}
 	}
 
+	/**
+	 * Opens a new channelGUI when joining a channel. Also disposes this GUI.
+	 * 
+	 * @param channelname of the channel
+	 */
 	private void joinChannel(String channelname) {
 		ChannelGUI channel = new ChannelGUI(user, channelname,
 				readAndSaveData.readDataFromFile("Channels/" + channelname));

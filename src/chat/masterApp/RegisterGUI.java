@@ -25,6 +25,10 @@ public class RegisterGUI {
 	private JButton loginButton;
 	private ReadAndSaveData readAndSaveData = new ReadAndSaveData();
 
+	/**
+	 * Opens a new GUI for the registration process, including two textfields with
+	 * their matching descriptions (username, password) and one button to register.
+	 */
 	public RegisterGUI() {
 		frame = new JFrame();
 		frame.setTitle("Register at ChannelMaster");
@@ -54,6 +58,13 @@ public class RegisterGUI {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Registers the user, when the given username is not already taken by someone
+	 * else. After that the user is saved on the disk ("Database") and a new
+	 * user-object is created. This object as a parameter is used then to create the
+	 * main channel master application.
+	 * 
+	 */
 	private void register() {
 		String username = usernameField.getText();
 		String password = new String(passwordField.getPassword());

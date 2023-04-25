@@ -7,6 +7,12 @@ import java.util.HashMap;
 
 public class ChatServer {
 
+	/**
+	 * The main method of the ChatServer-class starts the server for the group chat
+	 * by creating a new serversocket, which clients can connect to.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		ArrayList<Socket> clientsForGroupchat = new ArrayList<>();
 		HashMap<Socket, String> clientNameList = new HashMap<Socket, String>();

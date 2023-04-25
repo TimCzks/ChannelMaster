@@ -23,6 +23,13 @@ public class ChannelMasterApplication {
 	private String username;
 	private ReadAndSaveData readAndSaveData = new chat.domain.logic.ReadAndSaveData();
 
+	/**
+	 * By this constructor the main window is started and shown to the user, through
+	 * which they can access all channels (others and their own). Also the group
+	 * chat can be entered here.
+	 * 
+	 * @param user that is created after the login / registration.
+	 */
 	public ChannelMasterApplication(User user) {
 		this.user = user;
 		this.username = user.getUsername();
@@ -59,6 +66,10 @@ public class ChannelMasterApplication {
 		});
 	}
 
+	/**
+	 * Setting up all the buttons that are shown and giving them actual
+	 * functionality.
+	 */
 	private void setUpButtons() {
 		getSearchButton().addActionListener(e -> {
 			new ChannelOverviewGUI(user, this);
@@ -74,6 +85,11 @@ public class ChannelMasterApplication {
 		});
 	}
 
+	/**
+	 * Checks, if the entered channelname belongs to the current user and if it
+	 * exists in general. According to those results, a new channel is created and
+	 * saved OR the channel that is owned by the current user is opened.
+	 */
 	private void createOrOpenOwnChannel() {
 		String channelname = JOptionPane.showInputDialog(frame, "Enter the name of your channel: ");
 		String pathToChannel = "Channels/" + channelname;
@@ -95,6 +111,12 @@ public class ChannelMasterApplication {
 		user.getOpenChannels().add(channel);
 	}
 
+	/**
+	 * Saves the user-account with all their own channels as information and their
+	 * password on the disk ("Database").
+	 * 
+	 * @param user that is saved
+	 */
 	private void save(User user) {
 		user.getOwnChannels().add(0, user.getPassword());
 		readAndSaveData.saveFileWith(user.getOwnChannels(), "Users/" + username);

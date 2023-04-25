@@ -18,12 +18,23 @@ public class ThreadServer extends Thread {
 	private ArrayList<Socket> clients;
 	private HashMap<Socket, String> clientNameList;
 
+	/**
+	 * Starts a new Threadserver.
+	 * 
+	 * @param socket
+	 * @param clients
+	 * @param clientNameList
+	 */
 	public ThreadServer(Socket socket, ArrayList<Socket> clients, HashMap<Socket, String> clientNameList) {
 		this.socket = socket;
 		this.clients = clients;
 		this.clientNameList = clientNameList;
 	}
 
+	/**
+	 * Through this thread, messages are sent to all the other clients, that are
+	 * connected to the server.
+	 */
 	@Override
 	public void run() {
 		try {

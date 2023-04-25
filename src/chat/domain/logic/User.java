@@ -11,6 +11,12 @@ public class User {
 	private List<ChannelGUI> openChannels;
 	private List<String> ownChannels;
 
+	/**
+	 * Creates a new user object with the given username. The lists of information
+	 * are here initialized.
+	 * 
+	 * @param username of the user
+	 */
 	public User(String username) {
 		this.username = username;
 		openChannels = new ArrayList<>();

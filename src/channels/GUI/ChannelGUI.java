@@ -30,6 +30,16 @@ public class ChannelGUI extends JFrame {
 	private ReadAndSaveData readAndSaveData = new ReadAndSaveData();
 	private PrintWriter writer;
 
+	/**
+	 * Creates a GUI for the channel. If the given user is not the owner of the
+	 * channel, the texfield, send-button and "save all messages"-button will be
+	 * disabled, so the user can only receive messages. Also the channel connects to
+	 * the server within this constructor.
+	 * 
+	 * @param user        of the channel and whole application
+	 * @param channelName of the channel
+	 * @param oldMessages of the channel to load
+	 */
 	public ChannelGUI(User user, String channelName, List<String> oldMessages) {
 		this.username = user.getUsername();
 		this.channelname = channelName;

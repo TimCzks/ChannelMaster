@@ -25,6 +25,16 @@ public class ChatClientGUI {
 	private PrintWriter writer;
 	public String username;
 
+	/**
+	 * Initializes a GUI for the group chat. It contains a Textarea for receiving
+	 * messages and a textfield below for sending those, having a "send"-button in
+	 * the bottom-right. Also the client connects to the server within this process.
+	 * 
+	 * @param username         from the user using the group chat
+	 * @param channelMasterApp to enable the groupchat-button on the main
+	 *                         application again, when the group chat is being
+	 *                         closed.
+	 */
 	public void initializeGroupChatClient(String username, ChannelMasterApplication channelMasterApp) {
 		frame = new JFrame("Chat Client from " + username);
 		this.username = username;
@@ -78,6 +88,10 @@ public class ChatClientGUI {
 		return chatTextArea;
 	}
 
+	/**
+	 * The Actionlistener to send a message, when pressing the button.
+	 *
+	 */
 	private class SendButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

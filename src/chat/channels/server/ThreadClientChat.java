@@ -14,12 +14,23 @@ public class ThreadClientChat implements Runnable {
 	private BufferedReader cin;
 	private ChatClientGUI chatClientGUI;
 
+	/**
+	 * Creates a new Thread for a new Chatclient, after connecting to the server.
+	 * 
+	 * @param socket        from the server
+	 * @param chatClientGUI
+	 * @throws IOException
+	 */
 	public ThreadClientChat(Socket socket, ChatClientGUI chatClientGUI) throws IOException {
 		this.socket = socket;
 		this.chatClientGUI = chatClientGUI;
 		this.cin = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	}
 
+	/**
+	 * Contains the implementation for receiving messages by reading what is sent
+	 * onto the server (in the groupchat).
+	 */
 	@Override
 	public void run() {
 		try {

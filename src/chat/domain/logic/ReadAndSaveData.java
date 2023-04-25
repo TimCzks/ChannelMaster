@@ -15,6 +15,12 @@ public class ReadAndSaveData {
 
 	private final String PATH = "./database/";
 
+	/**
+	 * Saves a file with the given params to the "Database"-folder as a text file.
+	 * 
+	 * @param fileinfos contained by the file that is about to be saved
+	 * @param filename  of the file
+	 */
 	public void saveFileWith(List<String> fileinfos, String filename) {
 		File f = new File(PATH + filename + ".txt");
 		if (fileinfos == null)
@@ -35,6 +41,12 @@ public class ReadAndSaveData {
 		}
 	}
 
+	/**
+	 * Reads the data that is stored in a textfile.
+	 * 
+	 * @param filename of the file
+	 * @return all the read information as a list of strings
+	 */
 	public List<String> readDataFromFile(String filename) {
 		File f = new File(PATH + filename + ".txt");
 		String[] information = null;
@@ -55,10 +67,21 @@ public class ReadAndSaveData {
 		return Arrays.asList(information);
 	}
 
+	/**
+	 * Checks, if a file is already existing.
+	 * 
+	 * @param filename of the file
+	 * @return wether there is a file under the given name
+	 */
 	public boolean doesFileExistAlready(String filename) {
 		return new File(PATH + filename + ".txt").exists();
 	}
 
+	/**
+	 * Makes an array of all channel names that are in the given directory.
+	 * 
+	 * @return array with all existing channel names
+	 */
 	public String[] getAllChannelNames() {
 		File directory = new File(PATH + "Channels/");
 		String[] channelList = directory.list();

@@ -26,6 +26,11 @@ public class LoginGUI {
 	private JButton loginButton;
 	private ReadAndSaveData readAndSaveData = new ReadAndSaveData();
 
+	/**
+	 * Shows the GUI for the login process, meaning 2 textfields for the username
+	 * and password and one button to submit the login data.
+	 * 
+	 */
 	public LoginGUI() {
 		frame = new JFrame();
 		frame.setTitle("Login at ChannelMaster");
@@ -60,6 +65,13 @@ public class LoginGUI {
 		frame.setVisible(true);
 	}
 
+	/**
+	 * Validates the data that is given, when submitting by pressing the button. If
+	 * the user does not exist or the password is wrong, the user gets informed and
+	 * can try again. If everything succeeds, a user object with the data from the
+	 * disk is created, which is passed to the ChannelMasterApplication then.
+	 * 
+	 */
 	private void login() {
 		String username = usernameField.getText();
 		String password = new String(passwordField.getPassword());

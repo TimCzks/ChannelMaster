@@ -17,6 +17,14 @@ public class ThreadClientChannel implements Runnable {
 	private ReadAndSaveData readAndSaveData = new ReadAndSaveData();
 	private List<ChannelGUI> channelsOfUser;
 
+	/**
+	 * Creates a new Thread for a new channel client, after connecting to the
+	 * server.
+	 * 
+	 * @param socket         from the server
+	 * @param user
+	 * @param currentchannel where the user is in
+	 */
 	public ThreadClientChannel(Socket socket, User user, ChannelGUI currentchannel) {
 		this.socket = socket;
 		this.currentChannel = currentchannel;
@@ -28,6 +36,10 @@ public class ThreadClientChannel implements Runnable {
 		}
 	}
 
+	/**
+	 * Contains the implementation for receiving messages by reading what is sent
+	 * onto the server (into this channel).
+	 */
 	@Override
 	public void run() {
 		try {

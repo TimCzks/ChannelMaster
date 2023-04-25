@@ -9,6 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * @author Tim Czerkas
+ * @author Monika Grigorova
+ *
+ */
 public class SignInGUI {
 	private JFrame frame;
 	private JLabel welcomeLabel;
@@ -19,6 +24,12 @@ public class SignInGUI {
 		new SignInGUI();
 	}
 
+	/**
+	 * The SignInGUI starts the program and displays two options for the user: to
+	 * login or to register themself. According to the chosen option, the user gets
+	 * the corresponding window shown.
+	 *
+	 */
 	public SignInGUI() {
 		frame = new JFrame();
 		frame.setTitle("Sign in at ChannelMaster");

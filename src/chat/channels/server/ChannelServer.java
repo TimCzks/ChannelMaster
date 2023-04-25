@@ -7,6 +7,12 @@ import java.util.HashMap;
 
 public class ChannelServer {
 
+	/**
+	 * The main method of the ChannelServer-class starts the server for all the
+	 * channels by creating a new serversocket, which clients can connect to.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		ArrayList<Socket> clientsForChannels = new ArrayList<>();
 		HashMap<Socket, String> clientNameList = new HashMap<Socket, String>();
